@@ -1,5 +1,5 @@
 {
-  "name": "@redux-effects/bind-effect",
+  "name": "bind-effect",
   "description": "Bind to the result of an effectful action",
   "repository": "git://github.com/redux-effects/bind-effect.git",
   "version": "0.1.0",

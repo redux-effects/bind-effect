@@ -7,7 +7,26 @@ Bind to the result of an effectful action
 
 ## Installation
 
-    $ npm install @redux-effects/bind-effect
+    $ npm install bind-effect
+
+## Usage
+
+`bind(action, onSuccess, onFailure) // Returns a plain JS object`
+
+## Example - Fetching some user data
+
+```javascript
+import {createAction} from 'redux-actions'
+import fetch from 'declarative-fetch'
+import bind from 'bind-effect'
+
+function loadUser () {
+  return bind(fetch('/user'), user => userDidLoad(user), err => userLoadDidFail(err))
+}
+
+const userDidLoad = createAction('USER_DID_LOAD')
+const userLoadDidFail = createAction('USER_LOAD_DID_FAIL')
+```
 
 ## License
 
