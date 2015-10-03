@@ -10,8 +10,21 @@ import bind from '../src'
  */
 
 test('should work', ({deepEqual, end}) => {
-  deepEqual(bind({}, test), {meta: {steps: [[test]]}})
-  deepEqual(bind(bind({}, test), test2), {meta: {steps: [[test], [test2]]}})
+  deepEqual(bind({}, test), {type: 'EFFECT_COMPOSE', payload: {}, meta: {steps: [[test]]}})
+  deepEqual(bind(bind({}, test), test2), {
+    type: 'EFFECT_COMPOSE',
+    payload: {
+      type: 'EFFECT_COMPOSE',
+      payload: {},
+      meta: {
+        steps: [[test]]
+      }
+    },
+    meta: {
+      steps: [[test2]]
+    }
+  })
+
   end()
 
   function test () {}

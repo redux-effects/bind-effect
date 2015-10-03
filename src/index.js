@@ -3,12 +3,12 @@
  */
 
 function bind (action, ...args) {
-  const meta = {...(action.meta || {})}
-  meta.steps = [...(meta.steps || []), [...args]]
-
   return {
-    ...action,
-    meta
+    type: 'EFFECT_COMPOSE',
+    payload: action,
+    meta: {
+      steps: [args]
+    }
   }
 }
 
